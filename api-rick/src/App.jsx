@@ -5,11 +5,15 @@ import PintarDatos from "./components/PintarDatos";
 const App = () => {
   const [characterName, setCharacterName] = useState("");
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("apiName")) {
-  //     setCharacterName(JSON.parse(localStorage.getItem("apiName")));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem("apiName")) {
+      setCharacterName(JSON.parse(localStorage.getItem("apiName")));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("apiName", JSON.stringify(characterName));
+  }, [characterName]);
 
   return (
     <div className="container">
